@@ -9,7 +9,7 @@ app.use(express.json());
 app.use(cors());
 
 mongoose.connect(
-  "mongodb+srv://yura:mimusic@cluster0.bqosrdk.mongodb.net/?retryWrites=true&w=majority", 
+  process.env.MONGODB_URI, 
   {
     useNewUrlParser: true,
   }
@@ -40,6 +40,6 @@ app.get('/read', async (req, res) => {
   })
 });
 
-app.listen(3001, () => {
+app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running on the port 3001...");
 })
